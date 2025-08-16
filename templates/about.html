@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Denimize - About Us</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(90deg, #003366, #0059b3);
+      color: #003366;
+    }
+
+    nav {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: 700;
+      margin: 0 20px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #0080ff;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: white;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-top: 50px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+
+    /* About Us section with photo */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .team-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .team-name {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('products_page') }}">Products</a>
+      <a href="{{ url_for('contact') }}">Contact / Order</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Denimize – Your Denim, Your Story</h1>
+    <p>Born in Pakistan, crafted for the world. At Denimize, we turn premium denim into your personal canvas with colors, patterns, fading, and laser engraving that make it uniquely yours. Wear your style, own your story.</p>
+
+    <h2>Mission Statement</h2>
+    <p>To empower individuals to express their unique style through fully customized denim, blending creativity, quality craftsmanship, and sustainable fashion practices, all proudly crafted in Pakistan.</p>
+
+    <h2>Vision Statement</h2>
+    <p>To become the leading global destination for personalized denim, showcasing Pakistan’s artistry and craftsmanship while redefining the way people connect with their clothing.</p>
+
+    <h2>About Us</h2>
+  <!-- Text Section -->
+  <div class="about-text" style="flex: 1;">
+    <p> Founded by Sania Bokhari in Pakistan, Denimize was born from the realization that the denim market in Pakistan had yet to be truly captured. Determined to change that, Sania set out to launch a brand that would not only stand out locally but also make its mark globally. Denimize showcases Pakistan’s exceptional craftsmanship and artistic heritage to the world turning denim into a canvas for creativity. With custom colors, patterns, fading, and personalized laser engraving, each piece is crafted with premium materials and meticulous detail, telling a story that’s uniquely yours while celebrating Pakistan’s artistry.
+    </p>
+  </div>
+
+  <!-- Image Section -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="{{ url_for('static', filename='images/team1.jpg') }}" 
+         alt="Founder Sania Bokhari" 
+         class="team-photo" 
+         style="max-width: 250px; border-radius: 8px;">
+    <div class="team-name">Founder</div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

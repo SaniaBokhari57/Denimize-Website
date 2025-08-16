@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Denimize - Cart & Checkout</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: 700;
+      margin: 0 20px;
+      font-size: 1.2rem;
+    }
+    nav a:hover {
+      color: #0080ff;
+    }
+
+    .cart-container {
+      width: 90%;
+      max-width: 1000px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: 700;
+    }
+
+    td img {
+      width: 70px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.3rem;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background-color: #0080ff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .checkout-btn:hover {
+      background-color: #0059b3;
+    }
+
+    @media (max-width: 768px) {
+      td img {
+        width: 50px;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+      .checkout-btn {
+        font-size: 1.1rem;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('products_page') }}">Products</a>
+    <a href="{{ url_for('choose_color') }}">Choose Color</a>
+  </nav>
+
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Color</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+<tbody>
+  <tr>
+    <td>
+      <img src="{{ url_for('static', filename='images/denim-overalls.jpg') }}" alt="Denim Overalls">
+      Classic Denim Shirt
+    </td>
+    <td>Blue</td>
+    <td>1</td>
+    <td>$55</td>
+    <td>
+      <span class="material-icons" style="cursor:pointer;color:red;">delete</span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="{{ url_for('static', filename='images/denim-shirt.jpg') }}" alt="Denim Shirt"> 
+      Custom Denim Overalls
+    </td>
+    <td>Light Blue</td>
+    <td>2</td>
+    <td>$120</td>
+    <td>
+      <span class="material-icons" style="cursor:pointer;color:red;">delete</span>
+    </td>
+  </tr>
+</tbody>
+
+    </table>
+
+    <div class="total">Total: $175</div>
+
+    <a href="{{ url_for('checkout_page') }}" class="checkout-btn">Proceed to Checkout</a>
+
+  </div>
+
+</body>
+</html>

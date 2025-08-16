@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Denimize - Custom Denim</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(90deg, #003366, #0059b3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #003366;
+      margin: 0;
+      padding-top: 65px; /* space for fixed navbar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Side Panels */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      width: 120px;
+      height: 100vh;
+      background: linear-gradient(180deg, #00264d, #004080);
+      z-index: 5;
+    }
+    .side-panel.left {
+      left: 0;
+    }
+    .side-panel.right {
+      right: 0;
+    }
+
+    /* Fixed Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 120px;
+      right: 120px;
+      max-width: calc(100% - 240px);
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 0 0 15px 15px;
+    }
+
+    /* Left nav links */
+    .nav-left a {
+      position: relative;
+      color: #003366;
+      font-weight: 700;
+      margin: 0 45px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      padding-bottom: 5px;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .nav-left a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      background-color: #0080ff;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .nav-left a:hover {
+      color: #0080ff;
+    }
+    .nav-left a:hover::after {
+      width: 100%;
+    }
+    .nav-left a.active {
+      color: #0059b3;
+      font-weight: 800;
+    }
+    .nav-left a.active::after {
+      width: 100%;
+      background-color: #0059b3;
+    }
+
+    /* Right icons container */
+    .nav-right {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-right a {
+      color: #003366;
+      font-size: 1.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-right a:hover {
+      color: #0080ff;
+    }
+
+    /* Hero banner with tagline overlay */
+    .hero {
+      width: calc(100% - 240px);
+      max-width: 1200px;
+      height: 480px;
+      margin: 40px 120px 30px;
+      border-radius: 15px;
+      background: url('{{ url_for("static", filename="images/hero-denim.jpg") }}') center center/cover no-repeat;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      user-select: none;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin: 0;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.85);
+    }
+    .hero .tagline {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin-top: 10px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+      letter-spacing: 0.1em;
+      font-style: italic;
+    }
+
+    /* Main content below hero */
+    .main-content {
+      max-width: 900px;
+      width: calc(100% - 240px);
+      margin: 0 120px 60px;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+    }
+    .main-content p {
+      font-size: 1.6rem;
+      margin: 25px 0 40px 0;
+      line-height: 1.65;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.55);
+    }
+
+    .btn {
+      background-color: #0080ff;
+      color: white;
+      padding: 18px 52px;
+      font-size: 1.4rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 7px 20px rgba(0,128,255,0.45);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 700;
+      user-select: none;
+      display: inline-block;
+      margin-bottom: 50px; /* Added spacing here */
+    }
+
+    .btn:hover {
+      background-color: #0059b3;
+      box-shadow: 0 10px 28px rgba(0,90,179,0.75);
+    }
+
+    /* Features section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 25px;
+    }
+    .feature-item {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      padding: 28px 20px;
+      width: 28%;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      color: #003366;
+      font-weight: 600;
+      font-size: 1.25rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .feature-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+    }
+    .feature-icon {
+      font-size: 4.5rem;
+      margin-bottom: 16px;
+      color: #0066cc;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .side-panel {
+        display: none;
+      }
+      nav {
+        left: 0;
+        right: 0;
+        max-width: 100%;
+        border-radius: 0;
+        padding: 15px 20px;
+      }
+      .nav-left a {
+        margin: 0 15px;
+        font-size: 1.1rem;
+      }
+      .hero {
+        width: 90%;
+        height: 350px;
+        margin: 40px auto 30px;
+      }
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .hero .tagline {
+        font-size: 1.6rem;
+      }
+      .main-content {
+        width: 90%;
+        margin: 0 auto 60px;
+        padding: 0 10px;
+        text-align: center;
+      }
+      .main-content p {
+        font-size: 1.3rem;
+      }
+      .features {
+        flex-direction: column;
+        gap: 25px;
+        max-width: 100%;
+      }
+      .feature-item {
+        width: 100%;
+      }
+      .nav-right a {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="side-panel left"></div>
+  <div class="side-panel right"></div>
+
+  <nav>
+  <div class="nav-left">
+    <a href="{{ url_for('home') }}" class="active">Home</a>
+    <a href="{{ url_for('products_page') }}">Products</a>
+    <a href="{{ url_for('about') }}">About Us</a>
+    <a href="{{ url_for('contact') }}">Contact / Order</a>
+  </div>
+  <div class="nav-right">
+    <!-- Home icon -->
+    <a href="{{ url_for('home') }}" title="Home" aria-label="Home">
+      <span class="material-icons">home</span>
+    </a>
+    <!-- Call button -->
+    <a href="tel:+1234567890" title="Call Us" aria-label="Call Us">
+      <span class="material-icons">call</span>
+    </a>
+  </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Welcome to Denimize</h1>
+    <div class="tagline">Denim made by you, for you!</div>
+  </div>
+
+  <div class="main-content">
+    <p>
+      Bring your denim dreams to life with a splash of color, bold patterns, signature fades, and personalized laser engraving that’s as unique as you are.
+    </p>
+
+    <a href="{{ url_for('products_page') }}" class="btn">See Our Products</a>
+  
+<div class="features">
+  <a href="{{ url_for('choose_color') }}" class="feature-item" >
+    <span class="material-icons feature-icon">color_lens</span>
+    Choose Your Color
+  </a>
+
+  <div class="feature-item">
+    <span class="material-icons feature-icon">texture</span>
+    Unique Patterns
+  </div>
+
+  <div class="feature-item">
+    <span class="material-icons feature-icon">local_fire_department</span>
+    Laser Engraving
+  </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

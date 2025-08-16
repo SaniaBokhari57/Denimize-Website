@@ -1,0 +1,103 @@
+body {
+  background-color: #e0f0ff; /* Light blue background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #003366; /* Dark blue text */
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 {
+  color: #004080; /* Darker blue */
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #0059b3; /* Medium dark blue */
+  font-size: 1.3rem;
+}
+.nav-left a, .nav-right a {
+  font-size: 1.3rem; /* equal font size for all */
+  font-weight: 700;
+  text-decoration: none;
+  color: #003366;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+  color: white;
+  background-color: #0080ff;
+  box-shadow: 0 4px 15px rgba(0,128,255,0.4);
+}
+
+.nav-left a.active {
+  color: white;
+  background-color: #0059b3;
+}
+/* Team Section */
+.team {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  text-align: center;
+  background: rgba(0,128,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  width: 200px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 3px solid #0059b3;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+.team-role {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #0059b3;
+}
+.features-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* space between boxes */
+  margin-top: 20px;
+}
+
+.feature-item {
+  background: white;
+  color: #003366;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 200px; /* consistent box width */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.color-box.selected {
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
