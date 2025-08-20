@@ -1,8 +1,9 @@
 # Denimize – Your Denim, Your Story
+By Syeda Sania Bokhari
 
 Live Website: [https://denimize-your-way-website.onrender.com/](https://denimize-your-way-website.onrender.com/)
 
-This website was **designed and developed by me** using Flask, HTML, and CSS. Denimize is a fully responsive, 7-page site where users can explore products, customize denim colors, learn about the brand, and complete checkout.  
+This website was designed and developed by me using Flask, HTML, and CSS. Denimize is a fully responsive, 7-page site where users can explore products, customize denim colors, learn about the brand, and complete checkout.  
 
 **Pages included:**
 1. Home  
