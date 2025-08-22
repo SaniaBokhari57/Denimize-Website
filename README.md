@@ -1,4 +1,4 @@
-# Denimize – Your Denim, Your Story
+# Denimize – Your Denim, Your Way
 *By Syeda Sania Bokhari*
 
 Live Website: [https://denimize-your-way-website.onrender.com/](https://denimize-your-way-website.onrender.com/)
